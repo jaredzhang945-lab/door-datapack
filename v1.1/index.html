@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更高级的门合成 v1.1 · JZ神出品</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: #1a1a1a;
+    color: #e8e8e8;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .hero {
+    background: linear-gradient(135deg, #2d4a2b 0%, #1e2d1c 100%);
+    border-bottom: 4px solid #5a8f4e;
+    padding: 60px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero > * { position: relative; }
+  .badge {
+    display: inline-block;
+    background: #5a8f4e;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .badge.author {
+    background: #b8860b;
+    margin-left: 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 6vw, 46px);
+    color: #fff;
+    margin-bottom: 16px;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+  }
+  .subtitle {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: #b8d4ad;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+  }
+  .card {
+    background: #262626;
+    border: 2px solid #3a3a3a;
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 24px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #5a8f4e; }
+  .card h2 {
+    font-size: 20px;
+    color: #8fc47f;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2::before {
+    content: "";
+    width: 4px;
+    height: 20px;
+    background: #5a8f4e;
+    border-radius: 2px;
+  }
+  
+  .recipe-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px;
+  }
+  .recipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    border-left: 4px solid #5a8f4e;
+  }
+  .recipe.reverse {
+    border-left-color: #d4a373;
+  }
+  .item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* 专门处理两个活板门上下叠放的视觉效果 */
+  .item-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .item-stack .icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  .item .icon {
+    width: 64px;
+    height: 64px;
+    background: #3a3a3a;
+    border: 2px solid #555;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 8px;
+  }
+  .item .label { font-size: 13px; color: #aaa; }
+  .arrow {
+    font-size: 28px;
+    color: #5a8f4e;
+    font-weight: bold;
+  }
+  .arrow.reverse {
+    color: #d4a373;
+  }
+  
+  .exclude {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .tag {
+    background: #3a2626;
+    border: 1px solid #6b3a3a;
+    color: #e08a8a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  .tag.ok {
+    background: #263a26;
+    border-color: #3a6b3a;
+    color: #8ae08a;
+  }
+  ul { list-style: none; }
+  ul li {
+    padding: 8px 0 8px 26px;
+    position: relative;
+    color: #ccc;
+  }
+  ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 6px;
+    color: #5a8f4e;
+  }
+  .meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .meta-item {
+    background: #1e1e1e;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  .meta-item strong { color: #8fc47f; }
+  footer {
+    text-align: center;
+    padding: 30px 20px 50px;
+    color: #666;
+    font-size: 13px;
+    border-top: 1px solid #2a2a2a;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div>
+    <span class="badge">Minecraft 数据包 v1.1</span>
+    <span class="badge author">作者：JZ神</span>
+  </div>
+  <h1>更高级的门合成</h1>
+  <p class="subtitle">双向合成，自由转换。让建筑不再浪费任何一块木材。</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <h2>v1.1 核心更新：双向合成</h2>
+    <p>本数据包为服务器添加了自定义合成配方。现在不仅可以把门拆成活板门，还能把多余的活板门重新拼回门！</p>
+    
+    <div class="recipe-container">
+      <!-- 正向合成 -->
+      <div class="recipe">
+        <div class="item">
+          <div class="icon">🚪</div>
+          <div class="label">任意木门 ×1</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="item">
+          <div class="icon">🪵</div>
+          <div class="label">活板门 ×2</div>
+        </div>
+      </div>
+      
+      <!-- 反向合成 -->
+      <div class="recipe reverse">
+        <div class="item">
+          <div class="item-stack">
+            <div class="icon">🪵</div>
+            <div class="icon">🪵</div>
+          </div>
+          <div class="label">同材质活板门 ×2<br>(上下竖排)</div>
+        </div>
+        <div class="arrow reverse">→</div>
+        <div class="item">
+          <div class="icon">🚪</div>
+          <div class="label">同材质木门 ×1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>适用范围</h2>
+    <p>支持所有常规木质门和对应的活板门互相转换，例如：</p>
+    <div class="exclude">
+      <span class="tag ok">橡木</span>
+      <span class="tag ok">云杉木</span>
+      <span class="tag ok">白桦木</span>
+      <span class="tag ok">丛林木</span>
+      <span class="tag ok">金合欢木</span>
+      <span class="tag ok">深色橡木</span>
+      <span class="tag ok">红树林木</span>
+      <span class="tag ok">樱花木</span>
+      <span class="tag ok">竹</span>
+      <span class="tag ok">绯红木</span>
+      <span class="tag ok">诡异木</span>
+      <span class="tag ok">苍白橡木</span>
+    </div>
+    <p style="margin-top:16px;">以下材质<strong>不参与</strong>转换：</p>
+    <div class="exclude">
+      <span class="tag">铁门</span>
+      <span class="tag">铜门</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>使用说明</h2>
+    <ul>
+      <li>数据包已部署在服务器 <code>world/datapacks/</code> 目录下，随服务器启动自动加载。</li>
+      <li>玩家<strong>无需安装任何客户端模组</strong>，进服即可使用。</li>
+      <li>配方类型为<strong>有序合成</strong>：门转活板门只需丢1个门进工作台；<strong>活板门转门时，必须将2个同材质活板门上下纵向排列</strong>。</li>
+      <li>合成产物材质与输入材料保持一致（木门只能转木活板门，不可跨材质）。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>版本信息</h2>
+    <div class="meta">
+      <div class="meta-item">当前版本：<strong>v1.1</strong></div>
+      <div class="meta-item">更新内容：<strong>支持双向合成</strong></div>
+      <div class="meta-item">制作工具：<strong>美西螈启动器</strong></div>
+      <div class="meta-item">开源协议：<strong>Public (开源分享)</strong></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  感谢使用 · 由 JZ神 制作并开源 · 在 GitHub 上查看源代码
+</footer>
+
+</body>
+</html>
