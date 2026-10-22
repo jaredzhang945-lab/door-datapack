@@ -1,16 +1,27 @@
-# 更高级的门合成数据包 (door-datapack)  V1.1重磅发布！！！
-# 作者：JZ神
-这是一个适用于 Minecraft 服务端的数据包，通过自定义合成配方，将各种木质门转化为活板门。
+# Advanced Door Crafting · Data Pack (door-datapack)
 
-## ✨ 功能
-* 任意木门（橡木、云杉、白桦等）在工作台中，可以合成出 **2 个** 对应材质的活板门。
-* 不包含铁门和铜门。
-* （新增）增加两个活板门竖着排放能生成同类型门
+**v1.1** · by JZ_X
 
-## 📥 下载与使用
-1. 前往右侧的 [Releases](https://github.com/jz-xbian/door-datapack/releases) 页面下载最新的 `.zip` 压缩包。
-2. 将压缩包放入服务器的 `world/datapacks/` 文件夹中。
-3. 重启服务器或输入 `/reload` 即可生效。客户端无需安装任何模组。
+A server-side Minecraft **data pack** that adds custom crafting recipes for converting wooden doors into trapdoors — and back again.
 
-## 🌐 网页介绍
-点击访问详细图文介绍：[点我访问网页](https://jz-xbian.github.io/door-datapack/v1.1)
+## ✨ Features
+
+- **Door → Trapdoors**: any wooden door crafts into **2 matching trapdoors**.
+- **Trapdoors → Door** *(new in v1.1)*: two matching trapdoors stacked vertically craft back into **1 door**.
+- Covers **12 wood types**: Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Mangrove, Cherry, Pale Oak, Bamboo, Crimson, Warped.
+- **Iron** and **copper** doors are not included.
+- No client-side mods required — server-side only.
+
+## 📥 Install
+
+1. Download the latest `.zip` from the [Releases](https://github.com/jz-xbian/door-datapack/releases) page.
+2. Drop it into your server's `world/datapacks/` folder.
+3. Restart the server, or run `/reload` in-game.
+
+## 🌐 Documentation
+
+Detailed visual guide: **[jz-xbian.github.io/door-datapack/v1.1](https://jz-xbian.github.io/door-datapack/v1.1)**
+
+## 📄 License
+
+Public — free to use, modify and redistribute.
