@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>门转活板门 · 合成数据包</title>
+<title>Door → Trapdoor · Data Pack</title>
 <style>
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +20,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* 头部 */
+  /* Hero */
   .hero {
     background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
     border-bottom: 1px solid #e2e8f0;
@@ -77,7 +77,7 @@
   }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
-  /* 卡片 */
+  /* Cards */
   .card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -110,7 +110,7 @@
   }
   .card p { color: #475569; }
 
-  /* 配方 */
+  /* Recipe */
   .recipe-container { display: flex; flex-direction: column; gap: 18px; margin-top: 15px; }
   .recipe {
     display: flex; align-items: center; justify-content: center; gap: 20px;
@@ -133,7 +133,7 @@
   .arrow { font-size: 28px; color: #2563eb; font-weight: bold; }
   .arrow.reverse { color: #0ea5e9; }
 
-  /* 标签 */
+  /* Tags */
   .exclude { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
   .tag {
     background: #fef2f2; border: 1px solid #fecaca; color: #dc2626;
@@ -168,71 +168,71 @@
 </head>
 <body>
 <div class="hero">
-<div class="badge">Minecraft 合成数据包</div>
-<h1>门 → 活板门</h1>
-<p class="subtitle">一个木门，拆成两个活板门。已搭载于本服务器，安装即用。</p>
+<div class="badge">Minecraft Data Pack</div>
+<h1>Door → Trapdoor</h1>
+<p class="subtitle">One wooden door splits into two trapdoors. Already running on this server — install and play.</p>
 </div>
 <div class="container">
 <div class="card">
-<h2>功能简介</h2>
-<p>本数据包为服务器添加了一条自定义合成配方：<strong>任意一种木门</strong> 可以在工作台中合成出 <strong>两个对应材质的活板门</strong>。方便你在建筑时把多余的门拆成更灵活的活板门使用。</p>
+<h2>Overview</h2>
+<p>This data pack adds a custom crafting recipe to your server: <strong>any wooden door</strong> can be crafted into <strong>two matching trapdoors</strong> at a crafting table. Handy for turning spare doors into something more flexible while building.</p>
 <div class="recipe">
 <div class="item">
 <div class="icon">🚪</div>
-<div class="label">任意木门 ×1</div>
+<div class="label">Any Wooden Door ×1</div>
 </div>
 <div class="arrow">→</div>
 <div class="item">
 <div class="icon">🪵</div>
-<div class="label">活板门 ×2</div>
+<div class="label">Trapdoors ×2</div>
 </div>
 </div>
 </div>
 <div class="card">
-<h2>适用范围</h2>
-<p>支持所有常规木质门，例如：</p>
+<h2>Supported Woods</h2>
+<p>Works with all standard wooden doors, for example:</p>
 <div class="exclude">
-<span class="tag ok">橡木门</span>
-<span class="tag ok">云杉门</span>
-<span class="tag ok">白桦门</span>
-<span class="tag ok">丛林木门</span>
-<span class="tag ok">金合欢门</span>
-<span class="tag ok">深色橡木门</span>
-<span class="tag ok">红树林门</span>
-<span class="tag ok">樱花木门</span>
-<span class="tag ok">竹门</span>
-<span class="tag ok">绯红木门</span>
-<span class="tag ok">诡异木门</span>
-<span class="tag ok">苍白橡木门</span>
+<span class="tag ok">Oak</span>
+<span class="tag ok">Spruce</span>
+<span class="tag ok">Birch</span>
+<span class="tag ok">Jungle</span>
+<span class="tag ok">Acacia</span>
+<span class="tag ok">Dark Oak</span>
+<span class="tag ok">Mangrove</span>
+<span class="tag ok">Cherry</span>
+<span class="tag ok">Bamboo</span>
+<span class="tag ok">Crimson</span>
+<span class="tag ok">Warped</span>
+<span class="tag ok">Pale Oak</span>
 </div>
-<p style="margin-top:16px;">以下门<strong>不在</strong>配方范围内：</p>
+<p style="margin-top:16px;">These are <strong>not</strong> included:</p>
 <div class="exclude">
-<span class="tag">铁门</span>
-<span class="tag">铜门</span>
+<span class="tag">Iron Door</span>
+<span class="tag">Copper Door</span>
 </div>
 </div>
 <div class="card">
-<h2>使用说明</h2>
+<h2>How to Use</h2>
 <ul>
-<li>数据包已部署在服务器，随服务器启动自动加载。</li>
-<li>玩家<strong>无需安装任何客户端模组</strong>，进服即可使用。</li>
-<li>打开工作台，放入一个木门，即可在结果栏看到两个活板门。</li>
-<li>合成产物材质与输入门保持一致。</li>
+<li>The pack is already installed on the server and loads automatically on startup.</li>
+<li>Players need <strong>no client-side mods</strong> — just join and play.</li>
+<li>Open a crafting table, put in one wooden door, and the result slot shows two trapdoors.</li>
+<li>The output always matches the material of the door you put in.</li>
 </ul>
 </div>
 <div class="card">
-<h2>技术信息</h2>
+<h2>Technical Info</h2>
 <div class="meta">
-<div class="meta-item">类型：<strong>合成数据包</strong></div>
-<div class="meta-item">加载方式：<strong>服务端自动加载</strong></div>
-<div class="meta-item">客户端需求：<strong>无需安装</strong></div>
-<div class="meta-item">制作工具：<strong>美西螈启动器</strong></div>
+<div class="meta-item">Type: <strong>Recipe Data Pack</strong></div>
+<div class="meta-item">Loading: <strong>Server-side, automatic</strong></div>
+<div class="meta-item">Client-side: <strong>Nothing to install</strong></div>
+<div class="meta-item">Made with: <strong>Axolotl Launcher</strong></div>
 </div>
 </div>
 </div>
 <footer>
 
-  本页面用于介绍服务器搭载的自定义合成数据包 · 由美西螈启动器制作
+  This page documents the custom recipe data pack running on this server · Made with Axolotl Launcher
 </footer>
 </body>
 </html>
