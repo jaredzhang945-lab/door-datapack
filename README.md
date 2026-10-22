@@ -13,4 +13,4 @@
 3. 重启服务器或输入 `/reload` 即可生效。客户端无需安装任何模组。
 
 ## 🌐 网页介绍
-点击访问详细图文介绍：[点我访问网页](https://jaredzhang945-lab.github.io/door-datapack/)
+点击访问详细图文介绍：[点我访问网页](https://jaredzhang945-lab.github.io/door-datapack/v1.1)
