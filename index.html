@@ -7,328 +7,163 @@
 <style>
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
-
-    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-
-    background: #1a1a1a;
-
-    color: #e8e8e8;
-
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+                 "Microsoft YaHei", system-ui, sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
     line-height: 1.7;
-
     min-height: 100vh;
-
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* 头部 */
   .hero {
-
-    background: linear-gradient(135deg, #2d4a2b 0%, #1e2d1c 100%);
-
-    border-bottom: 4px solid #5a8f4e;
-
-    padding: 60px 20px 50px;
-
+    background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 80px 20px 60px;
     text-align: center;
-
     position: relative;
-
     overflow: hidden;
-
   }
-
   .hero::before {
-
     content: "";
-
     position: absolute;
-
     inset: 0;
-
     background-image:
-
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
+      linear-gradient(rgba(37,99,235,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,99,235,0.05) 1px, transparent 1px);
     background-size: 40px 40px;
-
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
   }
-
   .hero > * { position: relative; }
 
   .badge {
-
     display: inline-block;
-
-    background: #5a8f4e;
-
-    color: #fff;
-
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #dbeafe;
     font-size: 13px;
-
     padding: 5px 16px;
-
     border-radius: 20px;
-
     letter-spacing: 1px;
-
     margin-bottom: 20px;
-
   }
+  .badge.author { background: #fff; color: #475569; border-color: #e2e8f0; margin-left: 10px; }
 
   h1 {
-
     font-size: clamp(28px, 6vw, 46px);
-
-    color: #fff;
-
+    color: #0f172a;
     margin-bottom: 16px;
-
-    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
-
+    letter-spacing: -.02em;
   }
-
   .subtitle {
-
     font-size: clamp(15px, 2.5vw, 18px);
-
-    color: #b8d4ad;
-
+    color: #475569;
     max-width: 600px;
-
     margin: 0 auto;
-
   }
 
-  .container {
+  .container { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
 
-    max-width: 900px;
-
-    margin: 0 auto;
-
-    padding: 50px 20px;
-
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .7s cubic-bezier(.5,0,0,1);
   }
+  .reveal.active { opacity: 1; transform: translateY(0); }
 
+  /* 卡片 */
   .card {
-
-    background: #262626;
-
-    border: 2px solid #3a3a3a;
-
-    border-radius: 10px;
-
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
     padding: 28px;
-
     margin-bottom: 24px;
-
-    transition: border-color 0.2s;
-
+    box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.10);
+    transition: border-color .2s, transform .3s, box-shadow .3s;
   }
-
-  .card:hover { border-color: #5a8f4e; }
-
+  .card:hover {
+    border-color: #c7d7f5;
+    transform: translateY(-3px);
+    box-shadow: 0 2px 4px rgba(15,23,42,.05), 0 16px 36px -16px rgba(37,99,235,.22);
+  }
   .card h2 {
-
     font-size: 20px;
-
-    color: #8fc47f;
-
+    color: #0f172a;
     margin-bottom: 16px;
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
+    font-weight: 650;
   }
-
   .card h2::before {
-
     content: "";
-
     width: 4px;
-
     height: 20px;
-
-    background: #5a8f4e;
-
+    background: #2563eb;
     border-radius: 2px;
-
   }
+  .card p { color: #475569; }
 
+  /* 配方 */
+  .recipe-container { display: flex; flex-direction: column; gap: 18px; margin-top: 15px; }
   .recipe {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 20px;
-
-    flex-wrap: wrap;
-
-    padding: 20px;
-
-    background: #1e1e1e;
-
-    border-radius: 8px;
-
-    margin-top: 10px;
-
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    flex-wrap: wrap; padding: 20px;
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 10px; border-left: 4px solid #2563eb;
   }
-
-  .item {
-
-    text-align: center;
-
-  }
+  .recipe.reverse { border-left-color: #0ea5e9; }
+  .item { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .item-stack { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+  .item-stack .icon { width: 44px; height: 44px; font-size: 20px; margin: 0; }
 
   .item .icon {
-
-    width: 64px;
-
-    height: 64px;
-
-    background: #3a3a3a;
-
-    border: 2px solid #555;
-
-    border-radius: 6px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 30px;
-
-    margin: 0 auto 8px;
-
+    width: 64px; height: 64px; background: #fff; border: 1px solid #e2e8f0;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 30px; margin: 0 auto 8px;
+    box-shadow: 0 1px 2px rgba(15,23,42,.05);
   }
+  .item .label { font-size: 13px; color: #64748b; }
+  .arrow { font-size: 28px; color: #2563eb; font-weight: bold; }
+  .arrow.reverse { color: #0ea5e9; }
 
-  .item .label { font-size: 13px; color: #aaa; }
-
-  .arrow {
-
-    font-size: 28px;
-
-    color: #5a8f4e;
-
-    font-weight: bold;
-
-  }
-
-  .exclude {
-
-    display: flex;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-
-    margin-top: 8px;
-
-  }
-
+  /* 标签 */
+  .exclude { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
   .tag {
-
-    background: #3a2626;
-
-    border: 1px solid #6b3a3a;
-
-    color: #e08a8a;
-
-    padding: 6px 14px;
-
-    border-radius: 20px;
-
-    font-size: 14px;
-
+    background: #fef2f2; border: 1px solid #fecaca; color: #dc2626;
+    padding: 6px 14px; border-radius: 20px; font-size: 14px;
   }
-
-  .tag.ok {
-
-    background: #263a26;
-
-    border-color: #3a6b3a;
-
-    color: #8ae08a;
-
-  }
+  .tag.ok { background: #eff6ff; border-color: #dbeafe; color: #1d4ed8; }
 
   ul { list-style: none; }
+  ul li { padding: 8px 0 8px 26px; position: relative; color: #475569; }
+  ul li::before { content: "▸"; position: absolute; left: 6px; color: #2563eb; }
+  ul li strong { color: #0f172a; }
 
-  ul li {
-
-    padding: 8px 0 8px 26px;
-
-    position: relative;
-
-    color: #ccc;
-
+  code {
+    background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 5px;
+    padding: 2px 6px; font-size: 13px; color: #1d4ed8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 
-  ul li::before {
-
-    content: "▸";
-
-    position: absolute;
-
-    left: 6px;
-
-    color: #5a8f4e;
-
-  }
-
-  .meta {
-
-    display: flex;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-
-    margin-top: 20px;
-
-  }
-
+  .meta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
   .meta-item {
-
-    background: #1e1e1e;
-
-    border: 1px solid #3a3a3a;
-
-    border-radius: 6px;
-
-    padding: 10px 16px;
-
-    font-size: 14px;
-
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: 10px 16px; font-size: 14px; color: #64748b;
   }
-
-  .meta-item strong { color: #8fc47f; }
+  .meta-item strong { color: #1d4ed8; }
 
   footer {
-
-    text-align: center;
-
-    padding: 30px 20px 50px;
-
-    color: #666;
-
-    font-size: 13px;
-
-    border-top: 1px solid #2a2a2a;
-
+    text-align: center; padding: 30px 20px 50px; color: #94a3b8;
+    font-size: 13px; border-top: 1px solid #e2e8f0; background: #fff;
   }
 
-  footer a { color: #5a8f4e; text-decoration: none; }
 </style>
 </head>
 <body>
