@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>更高级的门合成 v1.1 · JZ神出品</title>
+<title>Advanced Door Crafting v1.1 · by JZ_X</title>
 <style>
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +20,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* 头部 */
+  /* Hero */
   .hero {
     background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
     border-bottom: 1px solid #e2e8f0;
@@ -77,7 +77,7 @@
   }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
-  /* 卡片 */
+  /* Cards */
   .card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -110,7 +110,7 @@
   }
   .card p { color: #475569; }
 
-  /* 配方 */
+  /* Recipe */
   .recipe-container { display: flex; flex-direction: column; gap: 18px; margin-top: 15px; }
   .recipe {
     display: flex; align-items: center; justify-content: center; gap: 20px;
@@ -133,7 +133,7 @@
   .arrow { font-size: 28px; color: #2563eb; font-weight: bold; }
   .arrow.reverse { color: #0ea5e9; }
 
-  /* 标签 */
+  /* Tags */
   .exclude { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
   .tag {
     background: #fef2f2; border: 1px solid #fecaca; color: #dc2626;
@@ -170,30 +170,30 @@
 
 <div class="hero">
   <div>
-    <span class="badge">Minecraft 数据包 v1.1</span>
-    <span class="badge author">作者：JZ神</span>
+    <span class="badge">Minecraft Data Pack v1.1</span>
+    <span class="badge author">by JZ_X</span>
   </div>
-  <h1>更高级的门合成</h1>
-  <p class="subtitle">双向合成，自由转换。让建筑不再浪费任何一块木材。</p>
+  <h1>Advanced Door Crafting</h1>
+  <p class="subtitle">Two-way crafting, free conversion. Never waste a single plank again.</p>
 </div>
 
 <div class="container">
 
-  <!-- 注意：给每个卡片加上了 reveal 类 -->
+  <!-- Each card carries the reveal class for scroll animation -->
   <div class="card reveal">
-    <h2>v1.1 核心更新：双向合成</h2>
-    <p>本数据包为服务器添加了自定义合成配方。现在不仅可以把门拆成活板门，还能把多余的活板门重新拼回门！</p>
+    <h2>v1.1 Core Update: Two-way Crafting</h2>
+    <p>This data pack adds custom crafting recipes to your server. Doors can now be split into trapdoors, and spare trapdoors can be reassembled back into doors.</p>
     
     <div class="recipe-container">
       <div class="recipe">
         <div class="item">
           <div class="icon">🚪</div>
-          <div class="label">任意木门 ×1</div>
+          <div class="label">Any Wooden Door ×1</div>
         </div>
         <div class="arrow">→</div>
         <div class="item">
           <div class="icon">🪵</div>
-          <div class="label">活板门 ×2</div>
+          <div class="label">Trapdoors ×2</div>
         </div>
       </div>
       
@@ -203,94 +203,94 @@
             <div class="icon">🪵</div>
             <div class="icon">🪵</div>
           </div>
-          <div class="label">同材质活板门 ×2<br>(上下竖排)</div>
+          <div class="label">Matching Trapdoors ×2<br>(stacked vertically)</div>
         </div>
         <div class="arrow reverse">→</div>
         <div class="item">
           <div class="icon">🚪</div>
-          <div class="label">同材质木门 ×1</div>
+          <div class="label">Matching Door ×1</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="card reveal">
-    <h2>适用范围</h2>
-    <p>支持所有常规木质门和对应的活板门互相转换，例如：</p>
+    <h2>Supported Woods</h2>
+    <p>All standard wooden doors and their matching trapdoors convert both ways:</p>
     <div class="exclude">
-      <span class="tag ok">橡木</span>
-      <span class="tag ok">云杉木</span>
-      <span class="tag ok">白桦木</span>
-      <span class="tag ok">丛林木</span>
-      <span class="tag ok">金合欢木</span>
-      <span class="tag ok">深色橡木</span>
-      <span class="tag ok">红树林木</span>
-      <span class="tag ok">樱花木</span>
-      <span class="tag ok">竹</span>
-      <span class="tag ok">绯红木</span>
-      <span class="tag ok">诡异木</span>
-      <span class="tag ok">苍白橡木</span>
+      <span class="tag ok">Oak</span>
+      <span class="tag ok">Spruce</span>
+      <span class="tag ok">Birch</span>
+      <span class="tag ok">Jungle</span>
+      <span class="tag ok">Acacia</span>
+      <span class="tag ok">Dark Oak</span>
+      <span class="tag ok">Mangrove</span>
+      <span class="tag ok">Cherry</span>
+      <span class="tag ok">Bamboo</span>
+      <span class="tag ok">Crimson</span>
+      <span class="tag ok">Warped</span>
+      <span class="tag ok">Pale Oak</span>
     </div>
-    <p style="margin-top:16px;">以下材质<strong>不参与</strong>转换：</p>
+    <p style="margin-top:16px;">The following are <strong>not</strong> included:</p>
     <div class="exclude">
-      <span class="tag">铁门</span>
-      <span class="tag">铜门</span>
+      <span class="tag">Iron Door</span>
+      <span class="tag">Copper Door</span>
     </div>
   </div>
 
   <div class="card reveal">
-    <h2>使用说明</h2>
+    <h2>How to Use</h2>
     <ul>
-      <li>数据包已部署在服务器 <code>world/datapacks/</code> 目录下，随服务器启动自动加载。</li>
-      <li>玩家<strong>无需安装任何客户端模组</strong>，进服即可使用。</li>
-      <li>配方类型为<strong>有序合成</strong>：门转活板门只需丢1个门进工作台；<strong>活板门转门时，必须将2个同材质活板门上下纵向排列</strong>。</li>
-      <li>合成产物材质与输入材料保持一致（木门只能转木活板门，不可跨材质）。</li>
+      <li>The pack lives in the server's <code>world/datapacks/</code> folder and loads automatically on startup.</li>
+      <li>Players need <strong>no client-side mods</strong> — just join and play.</li>
+      <li>Recipes are <strong>shaped</strong>: door → trapdoor just needs one door in the table; <strong>trapdoor → door requires two matching trapdoors stacked vertically</strong>.</li>
+      <li>Output always matches the input material — oak stays oak, no cross-wood conversions.</li>
     </ul>
   </div>
 
   <div class="card reveal">
-    <h2>版本信息</h2>
+    <h2>Version</h2>
     <div class="meta">
-      <div class="meta-item">当前版本：<strong>v1.1</strong></div>
-      <div class="meta-item">更新内容：<strong>支持双向合成</strong></div>
-      <div class="meta-item">制作工具：<strong>美西螈启动器</strong></div>
-      <div class="meta-item">开源协议：<strong>Public (开源分享)</strong></div>
+      <div class="meta-item">Version: <strong>v1.1</strong></div>
+      <div class="meta-item">Changelog: <strong>Two-way crafting</strong></div>
+      <div class="meta-item">Made with: <strong>Axolotl Launcher</strong></div>
+      <div class="meta-item">License: <strong>Public (open source)</strong></div>
     </div>
   </div>
 
 </div>
 
 <footer>
-  感谢使用 · 由 JZ神 制作并开源 · 在 GitHub 上查看源代码
+  Thanks for using · Made and open-sourced by JZ_X · View the source on GitHub
 </footer>
 
-<!-- 这是驱动动画的 JavaScript 代码 -->
+<!-- Scroll-reveal animation -->
 <script>
-  // 找到所有带有 reveal 类的元素
+  // Grab every element with the reveal class
   const reveals = document.querySelectorAll('.reveal');
 
-  // 定义一个检查元素的函数
+  // Check whether elements have entered the viewport
   function revealOnScroll() {
-    // 获取浏览器窗口的高度
+    // viewport height
     const windowHeight = window.innerHeight;
-    // 设置一个触发点（元素顶部距离窗口底部 100px 时触发）
+    // trigger point: 100px above the bottom edge
     const revealPoint = 100;
 
     reveals.forEach(reveal => {
-      // 获取元素顶部距离页面顶部的距离
+      // element's distance from the top of the viewport
       const revealTop = reveal.getBoundingClientRect().top;
 
-      // 如果元素进入了视野
+      // if it entered the viewport
       if (revealTop < windowHeight - revealPoint) {
-        reveal.classList.add('active'); // 添加 active 类，触发 CSS 动画
+        reveal.classList.add('active'); // triggers the CSS transition
       }
     });
   }
 
-  // 页面加载完后先执行一次（为了显示第一屏的内容）
+  // run once on load so the first screen isn't blank
   revealOnScroll();
 
-  // 监听页面的滚动事件
+  // re-check on scroll
   window.addEventListener('scroll', revealOnScroll);
 </script>
 
