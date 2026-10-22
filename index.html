@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>门转活板门 · 合成数据包</title>
+<style>
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+
+    background: #1a1a1a;
+
+    color: #e8e8e8;
+
+    line-height: 1.7;
+
+    min-height: 100vh;
+
+  }
+
+  .hero {
+
+    background: linear-gradient(135deg, #2d4a2b 0%, #1e2d1c 100%);
+
+    border-bottom: 4px solid #5a8f4e;
+
+    padding: 60px 20px 50px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+  }
+
+  .hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+
+  }
+
+  .hero > * { position: relative; }
+
+  .badge {
+
+    display: inline-block;
+
+    background: #5a8f4e;
+
+    color: #fff;
+
+    font-size: 13px;
+
+    padding: 5px 16px;
+
+    border-radius: 20px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+
+  }
+
+  h1 {
+
+    font-size: clamp(28px, 6vw, 46px);
+
+    color: #fff;
+
+    margin-bottom: 16px;
+
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+
+  }
+
+  .subtitle {
+
+    font-size: clamp(15px, 2.5vw, 18px);
+
+    color: #b8d4ad;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+  }
+
+  .container {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 50px 20px;
+
+  }
+
+  .card {
+
+    background: #262626;
+
+    border: 2px solid #3a3a3a;
+
+    border-radius: 10px;
+
+    padding: 28px;
+
+    margin-bottom: 24px;
+
+    transition: border-color 0.2s;
+
+  }
+
+  .card:hover { border-color: #5a8f4e; }
+
+  .card h2 {
+
+    font-size: 20px;
+
+    color: #8fc47f;
+
+    margin-bottom: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+  }
+
+  .card h2::before {
+
+    content: "";
+
+    width: 4px;
+
+    height: 20px;
+
+    background: #5a8f4e;
+
+    border-radius: 2px;
+
+  }
+
+  .recipe {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    padding: 20px;
+
+    background: #1e1e1e;
+
+    border-radius: 8px;
+
+    margin-top: 10px;
+
+  }
+
+  .item {
+
+    text-align: center;
+
+  }
+
+  .item .icon {
+
+    width: 64px;
+
+    height: 64px;
+
+    background: #3a3a3a;
+
+    border: 2px solid #555;
+
+    border-radius: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    margin: 0 auto 8px;
+
+  }
+
+  .item .label { font-size: 13px; color: #aaa; }
+
+  .arrow {
+
+    font-size: 28px;
+
+    color: #5a8f4e;
+
+    font-weight: bold;
+
+  }
+
+  .exclude {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 8px;
+
+  }
+
+  .tag {
+
+    background: #3a2626;
+
+    border: 1px solid #6b3a3a;
+
+    color: #e08a8a;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+  }
+
+  .tag.ok {
+
+    background: #263a26;
+
+    border-color: #3a6b3a;
+
+    color: #8ae08a;
+
+  }
+
+  ul { list-style: none; }
+
+  ul li {
+
+    padding: 8px 0 8px 26px;
+
+    position: relative;
+
+    color: #ccc;
+
+  }
+
+  ul li::before {
+
+    content: "▸";
+
+    position: absolute;
+
+    left: 6px;
+
+    color: #5a8f4e;
+
+  }
+
+  .meta {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+
+  }
+
+  .meta-item {
+
+    background: #1e1e1e;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 6px;
+
+    padding: 10px 16px;
+
+    font-size: 14px;
+
+  }
+
+  .meta-item strong { color: #8fc47f; }
+
+  footer {
+
+    text-align: center;
+
+    padding: 30px 20px 50px;
+
+    color: #666;
+
+    font-size: 13px;
+
+    border-top: 1px solid #2a2a2a;
+
+  }
+
+  footer a { color: #5a8f4e; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="badge">Minecraft 合成数据包</div>
+<h1>门 → 活板门</h1>
+<p class="subtitle">一个木门，拆成两个活板门。已搭载于本服务器，安装即用。</p>
+</div>
+<div class="container">
+<div class="card">
+<h2>功能简介</h2>
+<p>本数据包为服务器添加了一条自定义合成配方：<strong>任意一种木门</strong> 可以在工作台中合成出 <strong>两个对应材质的活板门</strong>。方便你在建筑时把多余的门拆成更灵活的活板门使用。</p>
+<div class="recipe">
+<div class="item">
+<div class="icon">🚪</div>
+<div class="label">任意木门 ×1</div>
+</div>
+<div class="arrow">→</div>
+<div class="item">
+<div class="icon">🪵</div>
+<div class="label">活板门 ×2</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h2>适用范围</h2>
+<p>支持所有常规木质门，例如：</p>
+<div class="exclude">
+<span class="tag ok">橡木门</span>
+<span class="tag ok">云杉门</span>
+<span class="tag ok">白桦门</span>
+<span class="tag ok">丛林木门</span>
+<span class="tag ok">金合欢门</span>
+<span class="tag ok">深色橡木门</span>
+<span class="tag ok">红树林门</span>
+<span class="tag ok">樱花木门</span>
+<span class="tag ok">竹门</span>
+<span class="tag ok">绯红木门</span>
+<span class="tag ok">诡异木门</span>
+</div>
+<p style="margin-top:16px;">以下门<strong>不在</strong>配方范围内：</p>
+<div class="exclude">
+<span class="tag">铁门</span>
+<span class="tag">铜门</span>
+</div>
+</div>
+<div class="card">
+<h2>使用说明</h2>
+<ul>
+<li>数据包已部署在服务器，随服务器启动自动加载。</li>
+<li>玩家<strong>无需安装任何客户端模组</strong>，进服即可使用。</li>
+<li>打开工作台，放入一个木门，即可在结果栏看到两个活板门。</li>
+<li>合成产物材质与输入门保持一致。</li>
+</ul>
+</div>
+<div class="card">
+<h2>技术信息</h2>
+<div class="meta">
+<div class="meta-item">类型：<strong>合成数据包</strong></div>
+<div class="meta-item">加载方式：<strong>服务端自动加载</strong></div>
+<div class="meta-item">客户端需求：<strong>无需安装</strong></div>
+<div class="meta-item">制作工具：<strong>美西螈启动器</strong></div>
+</div>
+</div>
+</div>
+<footer>
+
+  本页面用于介绍服务器搭载的自定义合成数据包 · 由美西螈启动器制作
+</footer>
+</body>
+</html>
+ 
